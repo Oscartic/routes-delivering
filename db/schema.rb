@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_28_171819) do
+ActiveRecord::Schema.define(version: 2019_09_28_183736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,4 +27,19 @@ ActiveRecord::Schema.define(version: 2019_09_28_171819) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "services", force: :cascade do |t|
+    t.string "type_service"
+    t.string "address"
+    t.float "weight"
+    t.bigint "commune_id"
+    t.integer "route_id"
+    t.bigint "load_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commune_id"], name: "index_services_on_commune_id"
+    t.index ["load_id"], name: "index_services_on_load_id"
+  end
+
+  add_foreign_key "services", "communes"
+  add_foreign_key "services", "loads"
 end

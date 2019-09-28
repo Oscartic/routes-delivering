@@ -5,13 +5,13 @@ one:
   address: MyString
   weight: 1.5
   commune: one
-  load_type: one
-  route: one
+  route_id: 
+  load: one
 
 two:
   type_service: MyString
   address: MyString
   weight: 1.5
   commune: two
-  load_type: two
-  route: two
+  route_id: 
+  load: two

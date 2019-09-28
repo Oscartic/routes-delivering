@@ -5,8 +5,8 @@ class CreateServices < ActiveRecord::Migration[5.2]
       t.string :address
       t.float :weight
       t.references :commune, foreign_key: true
-      t.references :load_type, foreign_key: true
-      t.references :route, foreign_key: true
+      t.integer :route_id
+      t.references :load, foreign_key: true
 
       t.timestamps
     end
