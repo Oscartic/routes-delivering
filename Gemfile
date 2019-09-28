@@ -32,7 +32,14 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+#
+gem "bootstrap-sass"
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+# Hooks into will_paginate to format the html to match Twitter Bootstrap 4 styling
+gem 'will_paginate-bootstrap4'
+# Simple Rails app configuration
+gem 'figaro'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
