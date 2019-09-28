@@ -1,0 +1,43 @@
+<h1>Hola mundo</h1>
+<%= form_with(model: service, local: true) do |form| %>
+  <% if service.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(service.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+        <% service.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :type_service, 'Tipo de servicio' %>
+    <%= form.select(:type_service, [['Buscar encomienda', 'Buscar encomienda'], ['Retirar encomienda', 'Retirar encomienda']], {:prompt => 'Seleccione tipo de servicio...'}, {:class => 'form-control'})%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :address, 'Dirección' %>
+    <%= form.text_field :address, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :weight, 'Peso (.Kg)' %>
+    <%= form.number_field :weight, class: 'form-control', step: :any %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :commune_id, 'Comuna (Solo RM)' %>
+    <%= form.collection_select(:commune_id, Commune.all.order(:name), :id, :name, {:prompt => 'Seleccione Comuna...'}, {:class => 'form-control'}) %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :load_id, 'Tipo de carga' %>
+    <%= form.collection_select(:load_id, Load.all.order(:type_load), :id, :type_load, {:prompt => 'Seleccione tipo de carga...'}, {:class => 'form-control'}) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Ordenar servicio', class: 'btn btn-primary'%>
+  </div>
+<% end %>
