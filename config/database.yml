@@ -80,6 +80,8 @@ test:
 #
 production:
   <<: *default
-  database: routes-delivering_production
-  username: routes-delivering
-  password: <%= ENV['ROUTES-DELIVERING_DATABASE_PASSWORD'] %>
+  host:  <%= ENV['host'] %>
+  database: <%=  ENV['database'] %>
+  user: <%= ENV['user'] %>
+  port: 5432
+  password: <%= ENV['password'] %>
