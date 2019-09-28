@@ -1,2 +1,26 @@
 <h1>Services#index</h1>
 <p>Find me in app/views/services/index.html.erb</p>
+
+
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">#id</th>
+    <th scope="col">Tipo de servicio</th>
+    <th scope="col">Dirección</th>
+    <th scope="col">Peso</th>
+    <th scope="col">Tipo de carga</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @services.each do |service| %>
+    <tr>
+      <th scope="row"><%= service.id %></th>
+      <td><%= service.type_service %></td>
+      <td><%= service.address %></td>
+      <td><%= service.weight %></td>
+      <td><%= service.load.type_load %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

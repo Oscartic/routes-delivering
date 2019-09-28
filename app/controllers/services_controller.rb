@@ -1,6 +1,7 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
   def index
+    @services = Service.all.includes(:load)
   end
 
   def show
@@ -11,7 +12,6 @@ class ServicesController < ApplicationController
   end
 
   def create
-    binding.pry
     @service = Service.new(service_params)
     respond_to do |format|
       if @service.save
