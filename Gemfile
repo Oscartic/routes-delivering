@@ -32,7 +32,18 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+#
+#Bootstrap 4 rubygem for Rails / Sprockets / Hanami / etc https://rubygems.org/gems/bootstrap
+gem 'bootstrap', '~> 4.3.1'
+# Autoprefixer is a tool to parse CSS and add vendor prefixes to CSS rules using values from the Can I Use database.
+gem 'autoprefixer-rails', '~> 9.1', '>= 9.1.4'
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+gem 'rails-ujs', '~> 0.1.0'
+# Hooks into will_paginate to format the html to match Twitter Bootstrap 4 styling
+gem 'will_paginate-bootstrap4'
+# Simple Rails app configuration
+gem 'figaro'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
@@ -48,6 +59,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'pry'
 end
 
 group :test do
