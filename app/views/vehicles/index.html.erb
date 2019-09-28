@@ -1,0 +1,36 @@
+<div class="row ">
+  <div class="col-12">
+    <h1>Flota de vehiculos</h1>
+    <p>Listado de todos los vehiculos disponibles de la organización.</p>
+    <%= link_to 'Agregar Vehiculo', new_vehicle_path, class: 'btn btn-sm btn-dark mb-2', remote: true %>
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#id</th>
+        <th scope="col">Tipo de carga</th>
+        <th scope="col">Conductor</th>
+        <th scope="col">Capacidad Máxima</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% if @vehicles.present?  %>
+        <% @vehicles.each do |vehicle| %>
+          <tr>
+            <th scope="row"><%= vehicle.id %></th>
+            <td><%= vehicle.load.type_load %></td>
+            <td><%= vehicle.driver_id ? vehicle.driver_id : "Sin Conductor Asignado" %></td>
+            <td><%= vehicle.capacity %></td>
+          </tr>
+        <% end %>
+        <% else %>
+        <tr>
+          <th colspan="4">
+            No hay vehiculos registrados.
+          </th>
+        </tr>
+      <%end  %>
+      </tbody>
+    </table>
+    <%= render "partials/modal" %>
+  </div>
+</div>
