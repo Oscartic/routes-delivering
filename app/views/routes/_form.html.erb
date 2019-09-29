@@ -1,0 +1,80 @@
+<%= form_with(model: route, local: true) do |form| %>
+  <% if route.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(route.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+        <% route.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :starts_at, 'Inicio:' %>
+        <%= form.datetime_field(:starts_at, {:class => 'form-control datetimepicker-input'}) %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :ends_at, 'Inicio:' %>
+        <%= form.datetime_field(:ends_at, {:class => 'form-control datetimepicker-input'}) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :load_id, 'Tipo de carga' %>
+    <%= form.collection_select(:load_id, Load.all.order(:type_load), :id, :type_load, {:prompt => 'Seleccione tipo de carga...'}, {:class => 'form-control'}) %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :load_sum, 'Peso total (.Kg)' %>
+    <%= form.number_field :load_sum, class: 'form-control', step: :any %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :stops_amount, 'Paradas totales:' %>
+    <%= form.number_field :stops_amount, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Agendar Ruta', class: 'btn btn-primary'%>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+    $(function () {
+        $('#starts_at').datetimepicker({
+            Default: {
+                time: 'fa fa-clock-o',
+                date: 'fa fa-calendar',
+                up: 'fa fa-arrow-up',
+                down: 'fa fa-arrow-down',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-calendar-check-o',
+                clear: 'fa fa-delete',
+                close: 'fa fa-times'
+            }
+        });
+        $('#ends_at').datetimepicker({
+            Default: {
+                time: 'fa fa-clock-o',
+                date: 'fa fa-calendar',
+                up: 'fa fa-arrow-up',
+                down: 'fa fa-arrow-down',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-calendar-check-o',
+                clear: 'fa fa-delete',
+                close: 'fa fa-times'
+            }
+        });
+    });
+
+</script>

@@ -42,6 +42,8 @@ gem 'jquery-rails'
 gem 'rails-ujs', '~> 0.1.0'
 # Hooks into will_paginate to format the html to match Twitter Bootstrap 4 styling
 gem 'will_paginate-bootstrap4'
+#A Datepicker for Twitter Bootstrap, integrated with Rails assets pipeline
+gem 'bootstrap4-datetime-picker-rails'
 # Simple Rails app configuration
 gem 'figaro'
 # Reduces boot times through caching; required in config/boot.rb

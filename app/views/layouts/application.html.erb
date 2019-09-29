@@ -4,12 +4,13 @@
     <title>RoutesDelivering</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://use.fontawesome.com/b99d480ffa.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <%= render "partials/menu_app" %>
     <div class="container">
       <%= yield %>
     </div>

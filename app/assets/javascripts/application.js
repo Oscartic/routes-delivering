@@ -16,4 +16,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require moment
+//= require moment-timezone-with-data
+//= require tempusdominus-bootstrap-4
 //= require_tree .
