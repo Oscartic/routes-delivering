@@ -5,7 +5,7 @@
 
     <%= link_to 'Agregar Servicio', new_service_path, class: 'btn btn-sm btn-dark mb-2', remote: true %>
 
-    <table class="table">
+    <table class="table" id="services-table">
       <thead class="thead-dark">
       <tr>
         <th scope="col">#id</th>
@@ -13,6 +13,7 @@
         <th scope="col">Dirección</th>
         <th scope="col">Peso</th>
         <th scope="col">Tipo de carga</th>
+        <th scope="col">Ruta</th>
       </tr>
       </thead>
       <tbody>
@@ -23,6 +24,7 @@
           <td><%= service.address %></td>
           <td><%= service.weight %></td>
           <td><%= service.load.type_load %></td>
+          <td><%= service.route.present? ? "<span class='service-route'>Ruta: #{service.route.id}</div>".html_safe : "<span class='service-no-route'>Sin Ruta asignada</span>".html_safe %></td>
         </tr>
       <% end %>
       </tbody>

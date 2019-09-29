@@ -1,3 +1,18 @@
 // Place all the styles related to the services controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#services-table {
+  .service-no-route, .service-route {
+    display: block;
+    font-size: 0.8em;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+  }
+  .service-no-route {
+    background: #dc3939;
+  }
+  .service-route {
+    background: #2d8eef;
+  }
+}
