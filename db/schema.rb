@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_28_232554) do
+ActiveRecord::Schema.define(version: 2019_09_29_005700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,21 @@ ActiveRecord::Schema.define(version: 2019_09_28_232554) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "routes", force: :cascade do |t|
+    t.datetime "starts_at", null: false
+    t.datetime "ends_at", null: false
+    t.bigint "load_id"
+    t.float "load_sum"
+    t.integer "int_array", default: [], array: true
+    t.integer "stops_amount"
+    t.integer "vehicle_id"
+    t.integer "driver_id"
+    t.boolean "is_completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["load_id"], name: "index_routes_on_load_id"
+  end
+
   create_table "services", force: :cascade do |t|
     t.string "type_service"
     t.string "address"
@@ -59,6 +74,7 @@ ActiveRecord::Schema.define(version: 2019_09_28_232554) do
     t.index ["load_id"], name: "index_vehicles_on_load_id"
   end
 
+  add_foreign_key "routes", "loads"
   add_foreign_key "services", "communes"
   add_foreign_key "services", "loads"
   add_foreign_key "vehicles", "loads"
