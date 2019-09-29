@@ -1,4 +1,4 @@
-<%= form_with(model: driver, local: true) do |form| %>
+<%= form_with(model: driver, remote: true) do |form| %>
   <% if driver.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(driver.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -37,7 +37,7 @@
   </div>
 
   <div class="actions">
-    <%= form.submit 'Agregar Vehículo', class: 'btn btn-primary'%>
+    <%= form.submit 'Agregar Vehículo', class: 'btn btn-primary', data:{disable_with: '<i class="fas fa-spinner fa-spin"></i> Guardando Conductor...'}%>
   </div>
 <% end %>
 
