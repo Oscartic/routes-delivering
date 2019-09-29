@@ -1,0 +1,10 @@
+<% driver = driver.nil? ? @driver : driver %>
+<tr id="driver-<%= driver.id %>">
+  <th scope="row"><%= driver.id %></th>
+  <td><%= driver.name %></td>
+  <td><%= driver.last_name %></td>
+  <td><%= driver.phone %></td>
+  <td><%= driver.email %></td>
+  <td><%= driver.vehicle_id ? driver.vehicle_id : "Sin vehículo Asignado" %></td>
+  <td><%= link_to "editar", edit_driver_path(driver.id), remote: true %></td>
+</tr>

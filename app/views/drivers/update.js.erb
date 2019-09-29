@@ -1,0 +1,2 @@
+$("#app-modal").modal("hide");
+$("#driver-<%= @driver.id %>").replaceWith("<%= j render(partial: 'drivers/driver_tr', driver: @driver) %>");

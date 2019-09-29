@@ -1,0 +1,2 @@
+$("#app-modal").modal("hide");
+$("#vehicle-<%= @vehicle.id %>").replaceWith("<%= j render(partial: 'vehicle_tr', vehicle: @vehicle) %>");

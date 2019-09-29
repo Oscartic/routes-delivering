@@ -30,6 +30,17 @@ class VehiclesController < ApplicationController
   end
 
   def update
+    respond_to do |format|
+      if @vehicle.update(vehicle_params)
+        format.html { redirect_to @vehicle, notice: 'vehicle was successfully created.' }
+        format.json { render :show, status: :created, location: @vehicle }
+        format.js
+      else
+        format.html { render :new }
+        format.json { render json: @vehicle.errors, status: :unprocessable_entity }
+        format.js { render :new }
+      end
+    end
   end
 
   def destroy
@@ -42,7 +53,7 @@ class VehiclesController < ApplicationController
   end
 
   def vehicle_params
-    params.require(:vehicle).permit(:load_id, :driver_id, :capacity)
+    params.require(:vehicle).permit(:load_id, :driver_id, :capacity, :vehicle_patent)
   end
 
 end

@@ -12,19 +12,13 @@
         <th scope="col">Movil</th>
         <th scope="col">email</th>
         <th scope="col">Vehículo</th>
+        <th scope="col">Acciones</th>
       </tr>
       </thead>
-      <tbody>
+      <tbody id="drivers-table">
       <% if @drivers.present?  %>
         <% @drivers.each do |driver| %>
-          <tr>
-            <th scope="row"><%= driver.id %></th>
-            <td><%= driver.name %></td>
-            <td><%= driver.last_name %></td>
-            <td><%= driver.phone %></td>
-            <td><%= driver.email %></td>
-            <td><%= driver.vehicle_id ? driver.vehicle_id : "Sin vehículo Asignado" %></td>
-          </tr>
+          <%= render "driver_tr", driver: driver %>
         <% end %>
       <% else %>
         <tr>
