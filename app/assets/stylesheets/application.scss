@@ -15,15 +15,27 @@
  */
 @import "bootstrap";
 @import "tempusdominus-bootstrap-4";
+@import "https://fonts.googleapis.com/css?family=Open+Sans:500,600,700";
 
+html {
+  font-family: 'Open Sans', sans-serif !important;
+}
 #navbar-app {
   background-color: #009688;
   padding: 1em 0;
   margin-bottom: 2em;
+  border-bottom: 3px solid #cddc3a;
   .menu-item {
     background-color: #343a40;
-    border: 1px solid #FFF;
+    border: 1px solid #3e3b3b;
     border-radius: 5px;
     color: #FFF;
+    text-transform: uppercase;
+  }
+  .logo {
+    font-size: 1.8em;
+    line-height: 32px;
+    color: #CDDC39;
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.6);
   }
 }
