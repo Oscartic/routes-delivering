@@ -17,28 +17,31 @@ class RoutesController < ApplicationController
   def create
     @route = Route.new(route_params)
     services_in_route = params[:route][:services_array]
-    @route.int_array = params[:route][:int_array]
-    driver = Driver.where(vehicle_id: nil).first
-    vehicle = Vehicle.where(driver_id: nil, load_id: @route.load).first
-    @route.driver = driver
-    @route.vehicle = vehicle
-    @route.stops_amount = services_in_route.length
-    binding.pry
+    load = params[:route][:load_id].to_i
+    if Service.route_and_services_is_a_equal_load(services_in_route, load)
+      @route.int_array = params[:route][:int_array]
+      driver = Driver.where(vehicle_id: nil).first
+      vehicle = Vehicle.where(driver_id: nil, load_id: @route.load).first
+      @route.driver = driver
+      @route.vehicle = vehicle
+      @route.stops_amount = services_in_route.length
 
-    params[:route][:load_id]
-    #@route.starts_at = params[:route][:starts_at].strftime("%Y-%m-%d %H:%M:%S")
-    #@route.ends_at = params[:route][:ends_at].strftime("%Y-%m-%d %H:%M:%S")
-
-    respond_to do |format|
-      if @route.save
-        Service.assigned_route_to_services(services_in_route, @route)
-        format.html { redirect_to routes_path, notice: 'Route was successfully created.' }
-        format.json { render :show, status: :created, location: @route }
-      else
-        format.html { render :new }
-        format.json { render json: @route.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @route.save
+          Service.assigned_route_to_services(services_in_route, @route)
+          format.html { redirect_to routes_path, notice: 'Route was successfully created.' }
+          format.json { render :show, status: :created, location: @route }
+        else
+          format.html { render :new }
+          format.json { render json: @route.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to new_route_path(@route, @services_without_route), alert: 'El tipo de trasporte deber ser igual al de los despachos (General o Refrigerado)'
     end
+
+
+
   end
 
   def edit
