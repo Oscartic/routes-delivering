@@ -7,29 +7,31 @@
       <thead class="thead-dark">
       <tr>
         <th scope="col">#id</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Apellidos</th>
-        <th scope="col">Movil</th>
-        <th scope="col">email</th>
-        <th scope="col">Vehículo</th>
+        <th scope="col">Fecha/hora Inicio</th>
+        <th scope="col">Fecha/hora Termino</th>
+        <th scope="col">Peso total de Ruta</th>
+        <th scope="col">Paradas totales</th>
+        <th scope="col">Vehiculo</th>
+        <th scope="col">Conductor</th>
       </tr>
       </thead>
       <tbody>
-      <% if @drivers.present?  %>
-        <% @drivers.each do |driver| %>
+      <% if @routes.present?  %>
+        <% @routes.each do |route| %>
           <tr>
-            <th scope="row"><%= driver.id %></th>
-            <td><%= driver.name %></td>
-            <td><%= driver.last_name %></td>
-            <td><%= driver.phone %></td>
-            <td><%= driver.email %></td>
-            <td><%= driver.vehicle_id ? driver.vehicle_id : "Sin vehículo Asignado" %></td>
+            <th scope="row"><%= route.id %></th>
+            <td><%= route.starts_at %></td>
+            <td><%= route.ends_at %></td>
+            <td><%= route.load_sum %></td>
+            <td><%= route.stops_amount %></td>
+            <td><%= route.vehicle_id ? route.vehicle_id : "Sin vehículo Asignado" %></td>
+            <td><%= route.driver_id ? route.driver_id : "Sin Conductor Asignado" %></td>
           </tr>
         <% end %>
       <% else %>
         <tr>
           <th colspan="4">
-            No hay vehiculos registrados.
+            No hay Rutas Planificadas.
           </th>
         </tr>
       <%end  %>
