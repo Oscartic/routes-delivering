@@ -12,3 +12,15 @@
  *
  */
 @import "bootstrap";
+
+#navbar-app {
+  background-color: #009688;
+  padding: 1em 0;
+  margin-bottom: 2em;
+  .menu-item {
+    background-color: #343a40;
+    border: 1px solid #FFF;
+    border-radius: 5px;
+    color: #FFF;
+  }
+}
