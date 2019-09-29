@@ -37,6 +37,7 @@ class RoutesController < ApplicationController
       respond_to do |format|
         if @route.save
           Service.assigned_route_to_services(services_in_route, @route)
+          Driver.assign_vehicle_to_driver(@route.driver, @route.vehicle)
           format.html { redirect_to routes_path, notice: 'Route was successfully created.' }
           format.json { render :show, status: :created, location: @route }
         else
