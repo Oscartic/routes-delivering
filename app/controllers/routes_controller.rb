@@ -16,18 +16,22 @@ class RoutesController < ApplicationController
 
   def create
     @route = Route.new(route_params)
+    services_in_route = params[:route][:services_array]
     @route.int_array = params[:route][:int_array]
-    binding.pry
     driver = Driver.where(vehicle_id: nil).first
     vehicle = Vehicle.where(driver_id: nil, load_id: @route.load).first
     @route.driver = driver
     @route.vehicle = vehicle
-    params[:route][:services_array]
+    @route.stops_amount = services_in_route.length
+    binding.pry
+
     params[:route][:load_id]
     #@route.starts_at = params[:route][:starts_at].strftime("%Y-%m-%d %H:%M:%S")
     #@route.ends_at = params[:route][:ends_at].strftime("%Y-%m-%d %H:%M:%S")
+
     respond_to do |format|
       if @route.save
+        Service.assigned_route_to_services(services_in_route, @route)
         format.html { redirect_to routes_path, notice: 'Route was successfully created.' }
         format.json { render :show, status: :created, location: @route }
       else
