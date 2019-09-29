@@ -1,7 +1,7 @@
 class DriversController < ApplicationController
   before_action :set_driver, only: [:show, :edit, :update, :destroy]
   def index
-    @drivers = Driver.all.order(:name)
+    @drivers = Driver.all.order(:id)
   end
 
   def new
@@ -28,6 +28,19 @@ class DriversController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    respond_to do |format|
+      if @driver.update(driver_params)
+        format.html { redirect_to @driver, notice: 'Driver was successfully updated.' }
+        format.js
+      else
+        format.html { render :edit }
+        format.json { render json: @driver.errors, status: :unprocessable_entity }
+        format.js { render :edit }
+      end
+    end
   end
 
   def destroy
