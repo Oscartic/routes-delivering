@@ -1,0 +1,40 @@
+<div class="ro">
+  <div class="col-12">
+    <h1>Conductores</h1>
+    <p>Listado de todos los Conductores registrados en la plataforma</p>
+    <%= link_to 'Agregar Conductor', new_driver_path, class: 'btn btn-sm btn-dark mb-2', remote: true %>
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Movil</th>
+        <th scope="col">email</th>
+        <th scope="col">Vehículo</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% if @drivers.present?  %>
+        <% @drivers.each do |driver| %>
+          <tr>
+            <th scope="row"><%= driver.id %></th>
+            <td><%= driver.name %></td>
+            <td><%= driver.last_name %></td>
+            <td><%= driver.phone %></td>
+            <td><%= driver.email %></td>
+            <td><%= driver.vehicle_id ? driver.vehicle_id : "Sin vehículo Asignado" %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <th colspan="4">
+            No hay vehiculos registrados.
+          </th>
+        </tr>
+      <%end  %>
+      </tbody>
+    </table>
+    <%= render "partials/modal" %>
+  </div>
+</div>
