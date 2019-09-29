@@ -6,7 +6,7 @@ class Service < ApplicationRecord
   def self.route_and_services_is_a_equal_load(services, load)
     search_service = Service.where(id: services)
     values = search_service.map{|item| item.load_id === load}
-    if values === load
+    if values.grep_v(true).empty?
       return true
     else
       return false
