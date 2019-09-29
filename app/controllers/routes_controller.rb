@@ -7,7 +7,7 @@ class RoutesController < ApplicationController
     @route = Route.new
     no_route = Service.where(route_id: nil).map{ |service| service.commune_id }
     @Communes = Commune.where(id: no_route)
-    @services_without_route = Service.where(route_id: nil)
+    @services_without_route = Service.where(route_id: nil).includes(:commune, :load)
 
   end
 
@@ -25,6 +25,14 @@ class RoutesController < ApplicationController
       @route.driver = driver
       @route.vehicle = vehicle
       @route.stops_amount = services_in_route.length
+
+      # vehicles = Vehicle.where(vehicle_id: nil, load_id: load)
+      # vehicles_schedule = Route.all.map{|vehicle| vehicle.id }
+      # if vehicles.present?
+      #   return vehicles
+      # else
+      #   vehicles_schedule
+      # end
 
       respond_to do |format|
         if @route.save
