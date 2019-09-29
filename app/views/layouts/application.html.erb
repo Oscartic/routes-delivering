@@ -11,8 +11,9 @@
 
   <body>
     <%= render "partials/menu_app" %>
-    <%= render "partials/flash_message" %>
+
     <div class="container">
+      <%= render "partials/flash_message" %>
       <%= yield %>
     </div>
   </body>

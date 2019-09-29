@@ -25,7 +25,7 @@
             <td><%= route.load_sum %></td>
             <td><%= route.stops_amount %></td>
             <td><%= route.vehicle_id ? route.vehicle_id : "Sin vehículo Asignado" %></td>
-            <td><%= route.driver_id ? route.driver_id : "Sin Conductor Asignado" %></td>
+            <td><%= route.driver_id ? "id &#10097; #{route.driver_id} - #{route.driver.full_name}".html_safe : "Sin Conductor Asignado" %></td>
           </tr>
         <% end %>
       <% else %>
