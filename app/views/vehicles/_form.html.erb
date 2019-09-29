@@ -1,0 +1,28 @@
+<%= form_with(model: vehicle, local: true) do |form| %>
+  <% if vehicle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vehicle.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+        <% vehicle.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :load_id, 'Tipo de carga' %>
+    <%= form.collection_select(:load_id, Load.all.order(:type_load), :id, :type_load, {:prompt => 'Seleccione tipo de carga...'}, {:class => 'form-control'}) %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :capacity, 'Capacidad total del vehiculo (.Kg)' %>
+    <%= form.number_field :capacity, class: 'form-control', step: :any %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Agregar Vehículo', class: 'btn btn-primary'%>
+  </div>
+<% end %>
+

@@ -1,0 +1,43 @@
+<%= form_with(model: driver, local: true) do |form| %>
+  <% if driver.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(driver.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+        <% driver.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, 'Nombre:' %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :last_name, 'Apellidos:' %>
+    <%= form.text_field :last_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :phone, 'Movil:' %>
+    <%= form.text_field :phone, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email, 'eMail:' %>
+    <%= form.text_field :email, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :vehicle_id, 'Vehículo:' %>
+    <%= form.collection_select(:vehicle_id, Vehicle.all, :id, :load_id, {:prompt => 'Seleccione vehículo...'}, {:class => 'form-control'}) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Agregar Vehículo', class: 'btn btn-primary'%>
+  </div>
+<% end %>
+
