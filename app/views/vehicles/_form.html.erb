@@ -1,4 +1,4 @@
-<%= form_with(model: vehicle, local: true) do |form| %>
+<%= form_with(model: vehicle, remote: true) do |form| %>
   <% if vehicle.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(vehicle.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -10,6 +10,11 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="form-group">
+    <%= form.label :vehicle_patent, 'Patente del vehículo' %>
+    <%= form.text_field :vehicle_patent, class: 'form-control' %>
+  </div>
 
   <div class="form-group">
     <%= form.label :load_id, 'Tipo de carga' %>

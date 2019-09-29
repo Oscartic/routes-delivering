@@ -24,7 +24,6 @@ class DriversController < ApplicationController
         format.js { render :new }
       end
     end
-
   end
 
   def edit
