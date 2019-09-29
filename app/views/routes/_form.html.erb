@@ -1,4 +1,4 @@
-<%= form_with(model: route, local: true) do |form| %>
+<%= form_with(model: route, local: true, id: "routes-form") do |form| %>
   <% if route.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(route.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="row">
-    <div class="col-6">
+    <div class="col-3">
       <div class="form-group">
         <%= form.label :starts_at, 'Inicio:' %>
         <%= form.datetime_field(:starts_at, {:class => 'form-control datetimepicker-input'}) %>
       </div>
     </div>
 
-    <div class="col-6">
+    <div class="col-3">
       <div class="form-group">
         <%= form.label :ends_at, 'Inicio:' %>
         <%= form.datetime_field(:ends_at, {:class => 'form-control datetimepicker-input'}) %>
@@ -29,17 +29,21 @@
 
   <div class="form-group">
     <%= form.label :load_id, 'Tipo de carga' %>
-    <%= form.collection_select(:load_id, Load.all.order(:type_load), :id, :type_load, {:prompt => 'Seleccione tipo de carga...'}, {:class => 'form-control'}) %>
+    <%= form.collection_select(:load_id, Load.all.order(:type_load), :id, :type_load, {:prompt => 'Seleccione tipo de carga...', }, {:class => 'form-control', :required => true}) %>
+  </div>
+
+  <div class="commune-item">
+    <% @services_without_route.each do |service| %>
+      <div>
+        <%= form.check_box(:services_array, {multiple: true}, service.id, false)  %>
+        <%= form.label :services_array, "<span style='font-size: 0.8em'>&#10070; #{service.address}</span> <span style='font-size: 0.8em; font-weight: 500;'>/ #{service.commune.name}</span> <span style='font-size: 0.8em; color: #9c27b0'>/ #{service.weight} Kg</span> <span style='font-size: 0.8em; #{service.load_id === 1 ? 'color: #41ab01' : 'color: blue'}'>/ #{service.load.type_load}</span>".html_safe %>
+      </div>
+    <% end %>
   </div>
 
   <div class="form-group">
     <%= form.label :load_sum, 'Peso total (.Kg)' %>
     <%= form.number_field :load_sum, class: 'form-control', step: :any %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :stops_amount, 'Paradas totales:' %>
-    <%= form.number_field :stops_amount, class: 'form-control' %>
   </div>
 
   <div class="actions">

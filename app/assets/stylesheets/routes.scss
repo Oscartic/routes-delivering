@@ -1,3 +1,19 @@
 // Place all the styles related to the routes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#routes-form {
+    .commune-item {
+      input[type="checkbox"] {
+        margin: 5px;
+      }
+      p.label-route-form {
+        display: inline-block;
+        color: red;
+      }
+      span.dir {
+        font-size: 0.5em;
+        margin: 5px;
+        color: red;
+      }
+    }
+}
