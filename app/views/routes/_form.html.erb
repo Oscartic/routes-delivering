@@ -29,7 +29,7 @@
 
   <div class="form-group">
     <%= form.label :load_id, 'Tipo de carga' %>
-    <%= form.collection_select(:load_id, Load.all.order(:type_load), :id, :type_load, {:prompt => 'Seleccione tipo de carga...'}, {:class => 'form-control'}) %>
+    <%= form.collection_select(:load_id, Load.all.order(:type_load), :id, :type_load, {:prompt => 'Seleccione tipo de carga...', }, {:class => 'form-control', :required => true}) %>
   </div>
 
   <div class="commune-item">
