@@ -53,10 +53,10 @@ Vehicle.create(load: lg, driver_id: nil, capacity: 350.0, vehicle_patent: "CVTB-
 Vehicle.create(load: lg, driver_id: nil, capacity: 350.0, vehicle_patent: "RTFD-96")
 Vehicle.create(load: lf, driver_id: nil, capacity: 200.0, vehicle_patent: "CRTH-78")
 Vehicle.create(load: lf, driver_id: nil, capacity: 200.0, vehicle_patent: "ASLR-44")
-v1 = Vehicle.create(load: lg, driver_id: nil, capacity: 350.0, vehicle_patent: "LSRT-56")
+Vehicle.create(load: lg, driver_id: nil, capacity: 350.0, vehicle_patent: "LSRT-56")
 
 Driver.create(name: "Juan Manuel", last_name: "Valles", phone: "+5699258796", email: "Juan@mail.com", vehicle_id: nil)
 Driver.create(name: "Carlos", last_name: "Rios", phone: "+5699258796", email: "carlos@mail.com", vehicle_id: nil)
 Driver.create(name: "Pedro Antonio", last_name: "Cerrano", phone: "+5699258796", email: "pedro@mail.com", vehicle_id: nil)
-d1 = Driver.create(name: "Camila", last_name: "Aranda", phone: "+5699258796", email: "cami@mail.com", vehicle: v1)
-v1.update(driver: d1)
+Driver.create(name: "Vicente", last_name: "Marelo", phone: "+5699258796", email: "vicente@mail.com", vehicle_id: nil)
+Driver.create(name: "Camila", last_name: "Aranda", phone: "+5699258796", email: "cami@mail.com", vehicle: nil)

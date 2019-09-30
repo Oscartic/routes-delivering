@@ -1,7 +1,7 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
   def index
-    @vehicles = Vehicle.all
+    @vehicles = Vehicle.all.includes(:driver, :load)
   end
 
   def new

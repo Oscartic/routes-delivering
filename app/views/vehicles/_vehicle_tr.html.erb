@@ -3,7 +3,7 @@
   <th scope="row"><%= vehicle.id %></th>
   <td><%= vehicle.vehicle_patent.present? ? vehicle.vehicle_patent : "Vehiculo sin Patente" %></td>
   <td><%= vehicle.load.type_load %></td>
-  <td><%= vehicle.driver_id ? vehicle.driver_id : "Sin Conductor Asignado" %></td>
+  <td><%= vehicle.driver_id ? "id ❱ #{vehicle.driver_id} / #{vehicle.driver.full_name}"  : "Sin Conductor Asignado" %></td>
   <td><%= vehicle.capacity %></td>
   <td><%= link_to "Editar", edit_vehicle_path(vehicle.id), remote: true %></td>
 </tr>

@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-12 text-center mt-5">
+    <h1>Planificador de Rutas App</h1>
+    <p>generador de rutas, para el servicio de delivery o pickup.</p>
+
+    <div class="row mt-5 pt-5">
+      <div class="col-3">
+        <h2>Servicios</h2>
+        <p>Servicios activos de delivery y pickup. </p>
+        <%= link_to "Ir a Servicios", services_path %>
+      </div>
+      <div class="col-3">
+        <h2>Vehículos</h2>
+        <p>Toda la flota de vehículos, encargados de entregar nuestro servicio.</p>
+        <%= link_to "Ir a Vehículos", vehicles_path %>
+      </div>
+      <div class="col-3">
+        <h2>Conductores</h2>
+        <p>Listado de todos los conductores profesionales vinculados a la empresa.</p>
+        <%= link_to "Ir a Conductores", drivers_path %>
+      </div>
+      <div class="col-3">
+        <h2>Rutas</h2>
+        <p>Modulo de generación y gestión de rutas en la Región Metropolitana.</p>
+        <%= link_to "Ir a Rutas", routes_path %>
+      </div>
+    </div>
+  </div>
+</div>
