@@ -15,16 +15,27 @@
     <div class="col-3">
       <div class="form-group">
         <%= form.label :starts_at, 'Inicio:' %>
-        <%= form.time_field(:starts_at, {:class => 'form-control datetimepicker-input'}) %>
+        <div class="input-group date" id="starts_at" data-target-input="nearest">
+          <%= form.text_field(:starts_at, {:class => 'form-control datetimepicker-input', 'data-target' => "#starts_at"}) %>
+          <div class="input-group-append" data-target="#starts_at" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="col-3">
       <div class="form-group">
         <%= form.label :ends_at, 'Inicio:' %>
-        <%= form.time_field(:ends_at, {:class => 'form-control datetimepicker-input'}) %>
+        <div class="input-group date" id="ends_at" data-target-input="nearest">
+          <%= form.text_field(:ends_at, {:class => 'form-control datetimepicker-input', 'data-target' => "#ends_at"}) %>
+          <div class="input-group-append" data-target="#ends_at" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
+          </div>
+        </div>
       </div>
     </div>
+    
   </div>
 
   <div class="form-group">
@@ -54,30 +65,10 @@
 <script type="text/javascript">
     $(function () {
         $('#starts_at').datetimepicker({
-            Default: {
-                time: 'fa fa-clock-o',
-                date: 'fa fa-calendar',
-                up: 'fa fa-arrow-up',
-                down: 'fa fa-arrow-down',
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right',
-                today: 'fa fa-calendar-check-o',
-                clear: 'fa fa-delete',
-                close: 'fa fa-times'
-            }
+            format: 'LT'
         });
         $('#ends_at').datetimepicker({
-            Default: {
-                time: 'fa fa-clock-o',
-                date: 'fa fa-calendar',
-                up: 'fa fa-arrow-up',
-                down: 'fa fa-arrow-down',
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right',
-                today: 'fa fa-calendar-check-o',
-                clear: 'fa fa-delete',
-                close: 'fa fa-times'
-            }
+            format: 'LT'
         });
     });
 

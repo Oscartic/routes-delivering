@@ -25,7 +25,7 @@ class RoutesController < ApplicationController
       @route.driver = driver
       @route.vehicle = vehicle
       @route.stops_amount = services_in_route.length
-
+      binding.pry
       # vehicles = Vehicle.where(vehicle_id: nil, load_id: load)
       # vehicles_schedule = Route.all.map{|vehicle| vehicle.id }
       # if vehicles.present?
