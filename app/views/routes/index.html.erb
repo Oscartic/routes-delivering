@@ -9,8 +9,8 @@
         <th scope="col">#id ruta</th>
         <th scope="col">Vehiculo</th>
         <th scope="col">Conductor</th>
-        <th scope="col">Fecha/hora Inicio</th>
-        <th scope="col">Fecha/hora Termino</th>
+        <th scope="col">Fecha Inicio</th>
+        <th scope="col">Fecha Termino</th>
         <th scope="col">Paradas totales</th>
       </tr>
       </thead>
@@ -21,8 +21,8 @@
             <th scope="row"><%= route.id %></th>
             <td><%= route.vehicle_id ? "id &#10097; #{route.vehicle_id} / #{route.vehicle.vehicle_patent}".html_safe : "Sin vehículo Asignado" %></td>
             <td><%= route.driver_id ? "id &#10097; #{route.driver_id} - #{route.driver.full_name}".html_safe : "Sin Conductor Asignado" %></td>
-            <td><%= route.starts_at %></td>
-            <td><%= route.ends_at %></td>
+            <td><%= route.starts_at.strftime("%k:%M") %> Horas</td>
+            <td><%= route.ends_at.strftime("%k:%M") %> Horas</td>
             <td><span class="total-stops"><%= route.stops_amount %></span></td>
           </tr>
         <% end %>
