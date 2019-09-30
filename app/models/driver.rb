@@ -12,4 +12,5 @@ class Driver < ApplicationRecord
       vehicle.update(driver: driver)
      end
   end
+
 end
