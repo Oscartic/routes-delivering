@@ -5,6 +5,6 @@
   <td><%= driver.last_name %></td>
   <td><%= driver.phone %></td>
   <td><%= driver.email %></td>
-  <td><%= driver.vehicle_id ? driver.vehicle_id : "Sin vehículo Asignado" %></td>
+  <td><%= driver.vehicle_id ? "id ❱ #{driver.vehicle_id} / #{driver.vehicle.vehicle_patent}" : "Sin vehículo Asignado" %></td>
   <td><%= link_to "editar", edit_driver_path(driver.id), remote: true %></td>
 </tr>

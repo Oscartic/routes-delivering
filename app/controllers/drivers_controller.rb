@@ -1,7 +1,7 @@
 class DriversController < ApplicationController
   before_action :set_driver, only: [:show, :edit, :update, :destroy]
   def index
-    @drivers = Driver.all.order(:id)
+    @drivers = Driver.all.order(:id).includes(:vehicle)
   end
 
   def new

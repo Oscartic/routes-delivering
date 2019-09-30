@@ -1,6 +1,6 @@
 class RoutesController < ApplicationController
   def index
-    @routes = Route.all.order(:starts_at).includes(:driver, :vehicle)
+    @routes = Route.all.order(:starts_at).includes(:driver, :vehicle, :load)
   end
 
   def new
